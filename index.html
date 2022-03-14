@@ -13,6 +13,10 @@
                 color = '#' + Math.floor(Math.random() * 16777215).toString(16);
                 document.body.style.backgroundColor = color;
             }
+            function quack() {
+                var audio = new Audio('quack.mp3');
+                audio.play();
+            }
             function invocaPatito() {
                 let patito = document.createElement("img");
                 patito.src = "https://c.tenor.com/fOjhwb3eEqIAAAAi/quack-duck-high-res.gif";
@@ -22,6 +26,7 @@
                 patito.style.left = Math.floor(Math.random() * (window.innerWidth)) + 'px';
                 patito.style.top = Math.floor(Math.random() * (window.innerHeight)) + 'px';
                 document.body.appendChild(patito);
+                patito.onclick = quack
                 patitoCounter += 1;
             }
             let patitoCounter = 0;
