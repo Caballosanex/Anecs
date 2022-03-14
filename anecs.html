@@ -1,0 +1,47 @@
+<DOCTYPE html>
+    <html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>Patitos: 1</title>
+    </head>
+
+    <body style="margin: 0;">
+
+        <script>
+            function changeColor() {
+                color = '#' + Math.floor(Math.random() * 16777215).toString(16);
+                document.body.style.backgroundColor = color;
+            }
+            function invocaPatito() {
+                let patito = document.createElement("img");
+                patito.src = "https://c.tenor.com/fOjhwb3eEqIAAAAi/quack-duck-high-res.gif";
+                patito.style.width = "50px";
+                patito.style.heigh = "50px";
+                patito.style.position = "absolute";
+                patito.style.left = Math.floor(Math.random() * (window.innerWidth)) + 'px';
+                patito.style.top = Math.floor(Math.random() * (window.innerHeight)) + 'px';
+                document.body.appendChild(patito);
+                patitoCounter += 1;
+            }
+            let patitoCounter = 0;
+            invocaPatito()
+            document.addEventListener("DOMContentLoaded", function () {
+                changeColor();
+                let interval = setInterval(function () {
+                    changeColor();
+
+                    invocaPatito()
+                    document.head.innerHTML = `<title>Patitos: ${patitoCounter}</title>`;
+                    let patitos = document.onclick("img");
+                    for (let i = 0; i < patitos.length; i++) {
+                        patitos[i].style.left = Math.floor(Math.random() * (window.innerWidth)) + 'px';
+                        patitos[i].style.top = Math.floor(Math.random() * (window.innerHeight)) + 'px';
+                    }
+
+                }, 900)
+            });
+        </script>
+    </body>
+
+    </html>
