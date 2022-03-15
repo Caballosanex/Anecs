@@ -38,7 +38,7 @@
 
                     invocaPatito()
                     document.head.innerHTML = `<title>Patitos: ${patitoCounter}</title>`;
-                    let patitos = document.onclick("img");
+                    let patitos = document.getElementsByTagName("img");
                     for (let i = 0; i < patitos.length; i++) {
                         patitos[i].style.left = Math.floor(Math.random() * (window.innerWidth)) + 'px';
                         patitos[i].style.top = Math.floor(Math.random() * (window.innerHeight)) + 'px';
