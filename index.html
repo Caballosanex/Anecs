@@ -18,6 +18,21 @@
                 var audio = new Audio('quack.mp3');
                 audio.play();
             }
+            function crunch() {
+                var audio = new Audio('crack.mp3');
+                audio.play();
+            }
+            function ou() {
+                let ou = document.createElement("img");
+                ou.src = "ou.png"
+                ou.style.width = "50px";
+                ou.style.height = "50px";
+                ou.style.position = "absolute";
+                ou.style.left = Math.floor(Math.random() * (window.innerWidth)) + 'px';
+                ou.style.top = Math.floor(Math.random() * (window.innerHeight)) + 'px';
+                document.body.appendChild(ou);
+                ou.onclick = crunch
+            }
             function invocaPatito() {
                 let patito = document.createElement("img");
                 patito.src = "https://c.tenor.com/fOjhwb3eEqIAAAAi/quack-duck-high-res.gif";
