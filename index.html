@@ -22,7 +22,7 @@
                 var audio = new Audio('crack.mp3');
                 audio.play();
             }
-            function ou() {
+            function invocaou() {
                 let ou = document.createElement("img");
                 ou.src = "ou.png"
                 ou.style.width = "50px";
@@ -46,19 +46,26 @@
                 patitoCounter += 1;
             }
             let patitoCounter = 0;
-            invocaPatito()
+            invocaPatito();
             document.addEventListener("DOMContentLoaded", function () {
                 changeColor();
                 let interval = setInterval(function () {
                     changeColor();
 
-                    invocaPatito()
+                    invocaPatito();
                     document.head.innerHTML = `<title>Patitos: ${patitoCounter}</title>`;
                     let patitos = document.getElementsByTagName("img");
                     for (let i = 0; i < patitos.length; i++) {
                         patitos[i].style.left = Math.floor(Math.random() * (window.innerWidth)) + 'px';
                         patitos[i].style.top = Math.floor(Math.random() * (window.innerHeight)) + 'px';
                     }
+                    //ADAPTAR CODI. La funció "invocaou" ha d'estar fora del let interval. Invocaou ha de cridar-se en una possibilitat d'1 entre 50
+                    //per a que aparegui l'ou en pantalla. Aquest ou ha d'estar en un lloc random de la pantalla. Falta afegir funció per a que "onclick ou"
+                    //façi aparèixer un patito.
+//                    invocaou()
+//                    for (let i = 0; i < ous.length; i++) { 
+//                        ous[i].style.left = Math.floor(Math.random() * (window.innerWidth)) + 'px';
+//                        ous[i].style.top = Math.floor(Math.random() * (window.innerHeight)) + 'px';
 
                 }, 1200)
             });
