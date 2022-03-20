@@ -1,10 +1,10 @@
-<DOCTYPE html>
+<!DOCTYPE html>
     <html>
 
     <head>
         <meta charset="utf-8">
         <title>Patitos: 1</title>
-        <link rel="icon" type="image/png" href="anec.png"/> 
+        <link rel="icon" type="image/png" href="media/anec.png"/> 
     </head>
 
     <body style="margin: 0;">
@@ -14,24 +14,27 @@
                 color = '#' + Math.floor(Math.random() * 16777215).toString(16);
                 document.body.style.backgroundColor = color;
             }
+            function rand() {
+                Math.floor(Math.random() * 10);
+            }
             function quack() {
-                var audio = new Audio('quack.mp3');
+                var audio = new Audio('media/quack.mp3');
                 audio.play();
             }
             function crunch() {
-                var audio = new Audio('crack.mp3');
+                var audio = new Audio('media/crack.mp3');
                 audio.play();
             }
             function invocaou() {
                 let ou = document.createElement("img");
-                ou.src = "ou.png"
+                ou.src = "media/ou.png";
                 ou.style.width = "50px";
                 ou.style.height = "50px";
                 ou.style.position = "absolute";
                 ou.style.left = Math.floor(Math.random() * (window.innerWidth)) + 'px';
                 ou.style.top = Math.floor(Math.random() * (window.innerHeight)) + 'px';
                 document.body.appendChild(ou);
-                ou.onclick = crunch
+                ou.onclick = crunch();
             }
             function invocaPatito() {
                 let patito = document.createElement("img");
@@ -42,33 +45,34 @@
                 patito.style.left = Math.floor(Math.random() * (window.innerWidth)) + 'px';
                 patito.style.top = Math.floor(Math.random() * (window.innerHeight)) + 'px';
                 document.body.appendChild(patito);
-                patito.onclick = quack
+                patito.onclick = quack;
                 patitoCounter += 1;
             }
             let patitoCounter = 0;
-            invocaPatito();
-            document.addEventListener("DOMContentLoaded", function () {
-                changeColor();
-                let interval = setInterval(function () {
+                invocaPatito();
+                document.addEventListener("DOMContentLoaded", function () {
                     changeColor();
+                    let interval = setInterval(function () {
+                        changeColor();
 
-                    invocaPatito();
-                    document.head.innerHTML = `<title>Patitos: ${patitoCounter}</title>`;
-                    let patitos = document.getElementsByTagName("img");
-                    for (let i = 0; i < patitos.length; i++) {
-                        patitos[i].style.left = Math.floor(Math.random() * (window.innerWidth)) + 'px';
-                        patitos[i].style.top = Math.floor(Math.random() * (window.innerHeight)) + 'px';
-                    }
-                    //ADAPTAR CODI. La funció "invocaou" ha d'estar fora del let interval. Invocaou ha de cridar-se en una possibilitat d'1 entre 50
-                    //per a que aparegui l'ou en pantalla. Aquest ou ha d'estar en un lloc random de la pantalla. Falta afegir funció per a que "onclick ou"
-                    //façi aparèixer un patito.
-//                    invocaou()
-//                    for (let i = 0; i < ous.length; i++) { 
-//                        ous[i].style.left = Math.floor(Math.random() * (window.innerWidth)) + 'px';
-//                        ous[i].style.top = Math.floor(Math.random() * (window.innerHeight)) + 'px';
+                        invocaPatito();
+                        document.head.innerHTML = `<title>Patitos: ${patitoCounter}</title>`;
+                        let patitos = document.getElementsByTagName("img");
+                        for (let i = 0; i < patitos.length; i++) {
+                            patitos[i].style.left = Math.floor(Math.random() * (window.innerWidth)) + 'px';
+                            patitos[i].style.top = Math.floor(Math.random() * (window.innerHeight)) + 'px';
+                        }
+                        if (rand == 2) {
+                            invocaou();
+                            let ou = document.getElementsByTagName("img");
+                            for (let i = 0; i < ous.length; i++) {
+                                ou[i].style.left = Math.floor(Math.random() * (window.innerWidth)) + 'px';
+                                ou[i].style.top = Math.floor(Math.random() * (window.innerHeight)) + 'px';
+                            }
+                        }
 
-                }, 1200)
-            });
+                        }, 1200)
+                });
         </script>
     </body>
 
