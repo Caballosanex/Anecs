@@ -1,102 +1,101 @@
 <!DOCTYPE html>
-    <html>
+<html>
 
-    <head>
-        <meta charset="utf-8">
-        <title>Patitos: 1</title>
-        <link rel="icon" type="image/png" href="media/anec.png"/> 
-    </head>
+	<head>
+		<meta charset="utf-8">
+		<title>Patitos: 1</title>
+		<link rel="icon" type="image/png" href="media/anec.png"/> 
+	</head>
 
-    <body style="margin: 0;">
+	<body style="margin: 0;">
 
-        <script>
-            function changeColor() {
-                color = '#' + Math.floor(Math.random() * 16777215).toString(16);
-                document.body.style.backgroundColor = color;
-            }
-            function rand() {
-                return Math.floor(Math.random() * 10);
-            }
-            function quack() {
-                var audio = new Audio('media/quack.mp3');
-                audio.play();
-            }
-            function crunch() {
-                var audio = new Audio('media/crack.mp3');
-                audio.play();
-            }
-            function invocaou() {
-                let ou = document.createElement("img");
-                ou.src = "media/ou.png";
-                ou.style.width = "50px";
-                ou.style.height = "50px";
-                ou.style.position = "absolute";
-                ou.style.left = Math.floor(Math.random() * (window.innerWidth)) + 'px';
-                ou.style.top = Math.floor(Math.random() * (window.innerHeight)) + 'px';
-                document.body.appendChild(ou);
-                ou.addEventListener("click", function() {
-                    let patito = document.createElement("img");
-                    patito.src = "https://c.tenor.com/fOjhwb3eEqIAAAAi/quack-duck-high-res.gif";
-                    patito.style.width = "50px";
-                    patito.style.height = "50px";
-                    patito.style.position = "absolute";
-                    patito.style.left = Math.floor(Math.random() * (window.innerWidth)) + 'px';
-                    patito.style.top = Math.floor(Math.random() * (window.innerHeight)) + 'px';
-                    document.body.appendChild(patito);
-                    crunch();
-                    document.body.removeChild(ou);
-                    patitoCounter += 1;
-                });
-            }
-            function invocaPatito() {
-                let patito = document.createElement("img");
-                patito.src = "https://c.tenor.com/fOjhwb3eEqIAAAAi/quack-duck-high-res.gif";
-                patito.style.width = "50px";
-                patito.style.heigh = "50px";
-                patito.style.position = "absolute";
-                patito.style.left = Math.floor(Math.random() * (window.innerWidth)) + 'px';
-                patito.style.top = Math.floor(Math.random() * (window.innerHeight)) + 'px';
-                document.body.appendChild(patito);
-                patito.onclick = quack;
-                patitoCounter += 1;
-                localStorage.setItem("patitoCounter", patitoCounter);
+		<script>
+			function changeColor() {
+				color = '#' + Math.floor(Math.random() * 16777215).toString(16);
+				document.body.style.backgroundColor = color;
+			}
+			function rand() {
+				return Math.floor(Math.random() * 10);
+			}
+			function quack() {
+				var audio = new Audio('media/quack.mp3');
+				audio.play();
+			}
+			function crunch() {
+				var audio = new Audio('media/crack.mp3');
+				audio.play();
+			}
+			function invocaou() {
+				let ou = document.createElement("img");
+				ou.src = "media/ou.png";
+				ou.style.width = "50px";
+				ou.style.height = "50px";
+				ou.style.position = "absolute";
+				ou.style.left = Math.floor(Math.random() * (window.innerWidth)) + 'px';
+				ou.style.top = Math.floor(Math.random() * (window.innerHeight)) + 'px';
+				document.body.appendChild(ou);
+				ou.addEventListener("click", function() {
+					let patito = document.createElement("img");
+					patito.src = "https://c.tenor.com/fOjhwb3eEqIAAAAi/quack-duck-high-res.gif";
+					patito.style.width = "50px";
+					patito.style.height = "50px";
+					patito.style.position = "absolute";
+					patito.style.left = Math.floor(Math.random() * (window.innerWidth)) + 'px';
+					patito.style.top = Math.floor(Math.random() * (window.innerHeight)) + 'px';
+					document.body.appendChild(patito);
+					crunch();
+					document.body.removeChild(ou);
+					patitoCounter += 1;
+				});
+			}
+			function invocaPatito() {
+				let patito = document.createElement("img");
+				patito.src = "https://c.tenor.com/fOjhwb3eEqIAAAAi/quack-duck-high-res.gif";
+				patito.style.width = "50px";
+				patito.style.heigh = "50px";
+				patito.style.position = "absolute";
+				patito.style.left = Math.floor(Math.random() * (window.innerWidth)) + 'px';
+				patito.style.top = Math.floor(Math.random() * (window.innerHeight)) + 'px';
+				document.body.appendChild(patito);
+				patito.onclick = quack;
+				patitoCounter += 1;
+				localStorage.setItem("patitoCounter", patitoCounter);
 
-            }
-            let patitoCounter = 0;
-                invocaPatito();
-                document.addEventListener("DOMContentLoaded", function () {
-                    changeColor();
-                    let interval = setInterval(function () {
-                        changeColor();
+			}
+			let patitoCounter = 0;
+				invocaPatito();
+				document.addEventListener("DOMContentLoaded", function () {
+					changeColor();
+					let interval = setInterval(function () {
+						changeColor();
 
-                        invocaPatito();
-                        document.head.innerHTML = `<title>Patitos: ${patitoCounter}</title>`;
-                        let patitos = document.getElementsByTagName("img");
-                        for (let i = 0; i < patitos.length; i++) {
-                            patitos[i].style.left = Math.floor(Math.random() * (window.innerWidth)) + 'px';
-                            patitos[i].style.top = Math.floor(Math.random() * (window.innerHeight)) + 'px';
-                        }
-                        if (rand() == 2) {
-                            invocaou();
-                            let ou = document.getElementsByTagName("img");
-                            for (let i = 0; i < ous.length; i++) {
-                                ou[i].style.left = Math.floor(Math.random() * (window.innerWidth)) + 'px';
-                                ou[i].style.top = Math.floor(Math.random() * (window.innerHeight)) + 'px';
-                            }
-                        }
+						invocaPatito();
+						document.head.innerHTML = `<title>Patitos: ${patitoCounter}</title>`;
+						let patitos = document.getElementsByTagName("img");
+						for (let i = 0; i < patitos.length; i++) {
+							patitos[i].style.left = Math.floor(Math.random() * (window.innerWidth)) + 'px';
+							patitos[i].style.top = Math.floor(Math.random() * (window.innerHeight)) + 'px';
+						}
+						if (rand() == 2) {
+							invocaou();
+							let ou = document.getElementsByTagName("img");
+							for (let i = 0; i < ous.length; i++) {
+								ou[i].style.left = Math.floor(Math.random() * (window.innerWidth)) + 'px';
+								ou[i].style.top = Math.floor(Math.random() * (window.innerHeight)) + 'px';
+							}
+						}
 
-                        }, 1200)
-                });
-                let patitos = document.createElement("p");
-                patitos.innerHTML = `Patitos: ${patitoCounter}`;
-                patitos.style.position = "absolute";
-                patitos.style.left = "0px";
-                patitos.style.top = "0px";
-                patitos.style.color = "white";
-                patitos.style.fontFamily = "sans-serif";
-                patitos.style.fontSize = "20px";
-                document.body.appendChild(patitos);
-        </script>
-    </body>
-
-    </html>
+					}, 1200)
+				});
+			let patitos = document.createElement("p");
+			patitos.innerHTML = `Patitos: ${patitoCounter}`;
+			patitos.style.position = "absolute";
+			patitos.style.left = "0px";
+			patitos.style.top = "0px";
+			patitos.style.color = "white";
+			patitos.style.fontFamily = "sans-serif";
+			patitos.style.fontSize = "20px";
+			document.body.appendChild(patitos);
+		</script>
+	</body>
+</html>
