@@ -86,7 +86,17 @@
                         }
 
                         }, 1200)
-                });                
+                });  
+                // An UI element that gets patitoCounter shown on screen
+                let patitos = document.createElement("p");
+                patitos.innerHTML = `Patitos: ${patitoCounter}`;
+                patitos.style.position = "absolute";
+                patitos.style.left = "0px";
+                patitos.style.top = "0px";
+                patitos.style.color = "white";
+                patitos.style.fontFamily = "sans-serif";
+                patitos.style.fontSize = "20px";
+                document.body.appendChild(patitos);
         </script>
     </body>
 
