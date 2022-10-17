@@ -34,7 +34,19 @@
                 ou.style.left = Math.floor(Math.random() * (window.innerWidth)) + 'px';
                 ou.style.top = Math.floor(Math.random() * (window.innerHeight)) + 'px';
                 document.body.appendChild(ou);
-                ou.onclick = crunch;
+                ou.addEventListener("click", function() {
+                    let patito = document.createElement("img");
+                    patito.src = "https://c.tenor.com/fOjhwb3eEqIAAAAi/quack-duck-high-res.gif";
+                    patito.style.width = "50px";
+                    patito.style.height = "50px";
+                    patito.style.position = "absolute";
+                    patito.style.left = Math.floor(Math.random() * (window.innerWidth)) + 'px';
+                    patito.style.top = Math.floor(Math.random() * (window.innerHeight)) + 'px';
+                    document.body.appendChild(patito);
+                    crunch();
+                    document.body.removeChild(ou);
+                    patitoCounter += 1;
+                });
             }
             function invocaPatito() {
                 let patito = document.createElement("img");
@@ -47,6 +59,8 @@
                 document.body.appendChild(patito);
                 patito.onclick = quack;
                 patitoCounter += 1;
+                localStorage.setItem("patitoCounter", patitoCounter);
+
             }
             let patitoCounter = 0;
                 invocaPatito();
@@ -72,7 +86,7 @@
                         }
 
                         }, 1200)
-                });
+                });                
         </script>
     </body>
 
