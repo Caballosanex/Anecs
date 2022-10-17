@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   script.js                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alexsanc <alexsanc@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/17 22:26:32 by alexsanc          #+#    #+#             */
+/*   Updated: 2022/10/17 22:26:32 by alexsanc         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 function changeColor() {
     color = '#' + Math.floor(Math.random() * 16777215).toString(16);
     document.body.style.backgroundColor = color;
