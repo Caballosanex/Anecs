@@ -78,6 +78,10 @@ document.addEventListener("DOMContentLoaded", function () {
 		invocaPatito();
 		document.getElementById("title").innerHTML = `Patitos: ${patitoCounter}`;
 		document.getElementById("counter").innerHTML = `Patitos: ${patitoCounter}`;
+		if (patitoCounter == 69) {
+			document.getElementById("title").innerHTML = `Patitos: ${patitoCounter} - Nice`;
+			document.getElementById("counter").innerHTML = `Patitos: ${patitoCounter} - Nice`;
+		}
 		let patitos = document.getElementsByTagName("img");
 		for (let i = 0; i < patitos.length; i++) {
 			patitos[i].style.left = ~~ (Math.random() * (window.innerWidth)) + 'px';
