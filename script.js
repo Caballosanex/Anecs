@@ -16,7 +16,7 @@ function changeColor() {
 }
 
 function rand() {
-	return Math.floor(Math.random() * 10);
+	return ~~ (Math.random() * 10);
 }
 
 function quack() {
@@ -35,8 +35,8 @@ function invocaou() {
 	ou.style.width = "70px";
 	ou.style.height = "70px";
 	ou.style.position = "absolute";
-	ou.style.left = Math.floor(Math.random() * (window.innerWidth)) + 'px';
-	ou.style.top = Math.floor(Math.random() * (window.innerHeight)) + 'px';
+	ou.style.left = ~~ (Math.random() * (window.innerWidth)) + 'px';
+	ou.style.top = ~~ (Math.random() * (window.innerHeight)) + 'px';
 	document.body.appendChild(ou);
 	ou.addEventListener("click", function() {
 		invocaPatito();
@@ -52,8 +52,8 @@ function invocaPatito() {
 	patito.style.width = "50px";
 	patito.style.heigh = "50px";
 	patito.style.position = "absolute";
-	patito.style.left = Math.floor(Math.random() * (window.innerWidth)) + 'px';
-	patito.style.top = Math.floor(Math.random() * (window.innerHeight)) + 'px';
+	patito.style.left = ~~ (Math.random() * (window.innerWidth)) + 'px';
+	patito.style.top = ~~ (Math.random() * (window.innerHeight)) + 'px';
 	document.body.appendChild(patito);
 	patito.onclick = quack;
 	patitoCounter += 1;
@@ -63,7 +63,7 @@ let timer = 00;
 document.addEventListener("DOMContentLoaded", function () {
 	timer = setInterval(function () {
 		timer++;
-		var minutes = Math.floor(timer / 60);
+		var minutes = ~~ (timer / 60);
 		var seconds = timer % 60;
 		document.getElementById("timer").innerHTML = `Timer: ${(minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds)}`;
 	}, 1000);
@@ -80,15 +80,15 @@ document.addEventListener("DOMContentLoaded", function () {
 		document.getElementById("counter").innerHTML = `Patitos: ${patitoCounter}`;
 		let patitos = document.getElementsByTagName("img");
 		for (let i = 0; i < patitos.length; i++) {
-			patitos[i].style.left = Math.floor(Math.random() * (window.innerWidth)) + 'px';
-			patitos[i].style.top = Math.floor(Math.random() * (window.innerHeight)) + 'px';
+			patitos[i].style.left = ~~ (Math.random() * (window.innerWidth)) + 'px';
+			patitos[i].style.top = ~~ (Math.random() * (window.innerHeight)) + 'px';
 		}
 		if (rand() == 2) {
 			invocaou();
 			let ou = document.getElementsByTagName("img");
 			for (let i = 0; i < ou.length; i++) {
-				ou[i].style.left = Math.floor(Math.random() * (window.innerWidth)) + 'px';
-				ou[i].style.top = Math.floor(Math.random() * (window.innerHeight)) + 'px';
+				ou[i].style.left = ~~ (Math.random() * (window.innerWidth)) + 'px';
+				ou[i].style.top = ~~ (Math.random() * (window.innerHeight)) + 'px';
 			}
 		}
 	}, 1250)
