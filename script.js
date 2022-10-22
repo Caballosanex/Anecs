@@ -86,7 +86,7 @@ let patitoCounter = 0;
             if (rand() == 2) {
                 invocaou();
                 let ou = document.getElementsByTagName("img");
-                for (let i = 0; i < ous.length; i++) {
+                for (let i = 0; i < ou.length; i++) {
                     ou[i].style.left = Math.floor(Math.random() * (window.innerWidth)) + 'px';
                     ou[i].style.top = Math.floor(Math.random() * (window.innerHeight)) + 'px';
                 }
