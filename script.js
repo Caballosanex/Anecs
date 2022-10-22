@@ -57,8 +57,18 @@ function invocaPatito() {
     document.body.appendChild(patito);
     patito.onclick = quack;
     patitoCounter += 1;
-    
 }
+
+let timer = 00;
+document.addEventListener("DOMContentLoaded", function () {
+    timer = setInterval(function () {
+        timer++;
+        var minutes = Math.floor(timer / 60);
+        var seconds = timer % 60;
+        document.getElementById("timer").innerHTML = `Timer: ${(minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds)}`;
+    }, 1000);
+});
+
 let patitoCounter = 0;
     document.addEventListener("DOMContentLoaded", function () {
         changeColor();
