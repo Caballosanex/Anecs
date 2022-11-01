@@ -19,6 +19,10 @@ function rand() {
 	return ~~ (Math.random() * 10);
 }
 
+function setText(id, text) {
+    document.getElementById(id).innerHTML = text
+}
+
 function quack() {
 	var audio = new Audio('media/quack.mp3');
 	audio.play();
@@ -59,13 +63,15 @@ function invocaPatito() {
 	patitoCounter += 1;
 }
 
-let timer = 00;
+let timer = 0;
 document.addEventListener("DOMContentLoaded", function () {
 	timer = setInterval(function () {
 		timer++;
 		var minutes = ~~ (timer / 60);
 		var seconds = timer % 60;
-		document.getElementById("timer").innerHTML = `Timer: ${(minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds)}`;
+        var text = `Timer: ${minutes < 10 ? "0" + minutes : minutes}:${seconds < 10 ? "0" + seconds : seconds}`
+        //Alex si veus això pregunta'm sobre les dollar strings - Blai
+        setText("timer", text)
 	}, 1000);
 });
 
@@ -76,12 +82,12 @@ document.addEventListener("DOMContentLoaded", function () {
 	setInterval(function () {
 		changeColor();
 		invocaPatito();
-		document.getElementById("title").innerHTML = `Patitos: ${patitoCounter}`;
-		document.getElementById("counter").innerHTML = `Patitos: ${patitoCounter}`;
+        var text = `Patitos: ${patitoCounter}`
 		if (patitoCounter == 69) {
-			document.getElementById("title").innerHTML = `Patitos: ${patitoCounter} - Nice`;
-			document.getElementById("counter").innerHTML = `Patitos: ${patitoCounter} - Nice`;
+            text = `Patitos: ${patitoCounter} - Nice`
 		}
+        setText("title", text)
+        setText("counter", text)
 		let patitos = document.getElementsByTagName("img");
 		for (let i = 0; i < patitos.length; i++) {
 			patitos[i].style.left = ~~ (Math.random() * (window.innerWidth)) + 'px';
