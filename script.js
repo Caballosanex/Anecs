@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alexsanc <alexsanc@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/17 22:26:32 by alexsanc          #+#    #+#             */
-/*   Updated: 2023/05/18 14:29:22 by alexsanc         ###   ########.fr       */
+/*   Created: 2023/05/18 14:33:04 by alexsanc          #+#    #+#             */
+/*   Updated: 2023/05/18 14:33:31 by alexsanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ let backgroundMusic = new Audio('media/background.mp3');
 let audioPlaying = false;
 let audioButton;
 let playBar;
-let playBarInterval;
 
 function toggleBackgroundMusic() {
 	if (audioPlaying) {
@@ -167,6 +166,6 @@ function beginGame() {
 			}
 		}, 1250);
 	});
-}
 
-backgroundMusic.addEventListener('timeupdate', updateAudioPosition);
+	backgroundMusic.addEventListener('timeupdate', updateAudioPosition);
+}
