@@ -64,6 +64,9 @@ function changeColor() {
   }
   
   let timer = 0;
+  let backgroundMusic = new Audio('media/background.mp3');
+  backgroundMusic.loop = true;
+  
   document.addEventListener("DOMContentLoaded", function() {
 	timer = setInterval(function() {
 	  timer++;
@@ -72,6 +75,7 @@ function changeColor() {
 	  var text = `Timer: ${minutes < 10 ? "0" + minutes : minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
 	  setText("timer", text);
 	}, 1000);
+	backgroundMusic.play();
   });
   
   let patitoCounter = 0;
