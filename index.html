@@ -5,50 +5,30 @@
 	<meta charset="utf-8">
 	<title id="title">Patitos: 1</title>
 	<link rel="icon" type="image/png" href="media/anec.png" />
+
 	<style>
-		body {
-			margin: 0;
-		}
-
-		#counter,
-		#timer {
-			position: fixed;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-		}
-
-		button#beginButton {
-			padding: 10px 20px;
-			font-size: 1.2em;
+		div {
 			background-color: #0011ff;
-			color: rgb(0, 170, 255);
-			border: none;
+			border: 1px solid #0011ff;
 			border-radius: 5px;
-			box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-			position: fixed;
-			bottom: 20px;
-			right: 20px;
-			cursor: pointer;
-		}
-
-		#playBar {
-			position: fixed;
-			bottom: 0;
-			left: 0;
-			width: 0;
-			height: 4px;
-			background-color: #ccc;
+			box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+			color: rgb(0, 170, 255);
+			display: inline-block;
+			font-size: 1.5em;
+			font-weight: bold;
+			margin: 0.5em;
+			padding: 0.5em 1em;
+			text-align: center;
+			text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
 		}
 	</style>
 </head>
 
-<body>
+<body style="margin: 0;">
 	<div id="counter">Patitos: 1</div>
 	<div id="timer">Timer: 00:01</div>
-	<button id="beginButton" onclick="beginGame()">BEGIN GAME</button>
-	<div id="playBar"></div>
 	<script src="script.js"></script>
+
 </body>
 
 </html>

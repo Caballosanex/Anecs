@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alexsanc <alexsanc@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 14:33:04 by alexsanc          #+#    #+#             */
-/*   Updated: 2023/05/18 14:33:31 by alexsanc         ###   ########.fr       */
+/*   Created: 2023/05/18 14:37:29 by alexsanc          #+#    #+#             */
+/*   Updated: 2023/05/18 14:37:31 by alexsanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,17 +67,14 @@ let timer = 0;
 let patitoCounter = 0;
 let backgroundMusic = new Audio('media/background.mp3');
 let audioPlaying = false;
-let audioButton;
-let playBar;
 
 function toggleBackgroundMusic() {
 	if (audioPlaying) {
 		backgroundMusic.pause();
 		audioPlaying = false;
 		audioButton.innerText = "AUDIO OFF";
-		clearInterval(playBarInterval);
 	} else {
-		backgroundMusic.currentTime = parseFloat(localStorage.getItem('audioPosition')) || 0;
+		backgroundMusic.currentTime = 0;
 		backgroundMusic.loop = true;
 
 		const playPromise = backgroundMusic.play();
@@ -87,7 +84,6 @@ function toggleBackgroundMusic() {
 				.then(() => {
 					audioPlaying = true;
 					audioButton.innerText = "AUDIO ON";
-					startPlayBar();
 				})
 				.catch((error) => {
 					console.error("Failed to start background music:", error);
@@ -96,25 +92,16 @@ function toggleBackgroundMusic() {
 	}
 }
 
-function startPlayBar() {
-	playBarInterval = setInterval(function () {
-		const duration = backgroundMusic.duration;
-		const currentTime = backgroundMusic.currentTime;
-		const progressBarWidth = (currentTime / duration) * 100;
-		playBar.style.width = progressBarWidth + '%';
-	}, 100);
-}
+document.addEventListener("DOMContentLoaded", function () {
+	timer = setInterval(function () {
+		timer++;
+		const minutes = Math.floor(timer / 60);
+		const seconds = timer % 60;
+		const text = `Timer: ${minutes < 10 ? "0" + minutes : minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
+		setText("timer", text);
+	}, 1000);
 
-function updateAudioPosition() {
-	const position = backgroundMusic.currentTime;
-	localStorage.setItem('audioPosition', position);
-}
-
-function beginGame() {
-	const beginButton = document.getElementById("beginButton");
-	beginButton.style.display = "none";
-
-	audioButton = document.createElement("button");
+	const audioButton = document.createElement("button");
 	audioButton.id = "audioButton";
 	audioButton.innerText = "AUDIO OFF";
 	audioButton.style.padding = "10px 20px";
@@ -131,41 +118,27 @@ function beginGame() {
 	audioButton.onclick = toggleBackgroundMusic;
 	document.body.appendChild(audioButton);
 
-	playBar = document.getElementById("playBar");
-
-	document.addEventListener("DOMContentLoaded", function () {
-		timer = setInterval(function () {
-			timer++;
-			const minutes = Math.floor(timer / 60);
-			const seconds = timer % 60;
-			const text = `Timer: ${minutes < 10 ? "0" + minutes : minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
-			setText("timer", text);
-		}, 1000);
-
-		setInterval(function () {
-			changeColor();
-			invocaPatito();
-			let text = `Patitos: ${patitoCounter}`;
-			if (patitoCounter == 69) {
-				text = `Patitos: ${patitoCounter} - Nice`;
+	setInterval(function () {
+		changeColor();
+		invocaPatito();
+		let text = `Patitos: ${patitoCounter}`;
+		if (patitoCounter == 69) {
+			text = `Patitos: ${patitoCounter} - Nice`;
+		}
+		setText("title", text);
+		setText("counter", text);
+		const patitos = document.getElementsByTagName("img");
+		for (let i = 0; i < patitos.length; i++) {
+			patitos[i].style.left = Math.floor(Math.random() * window.innerWidth) + 'px';
+			patitos[i].style.top = Math.floor(Math.random() * window.innerHeight) + 'px';
+		}
+		if (rand() == 2) {
+			invocaou();
+			const ou = document.getElementsByTagName("img");
+			for (let i = 0; i < ou.length; i++) {
+				ou[i].style.left = Math.floor(Math.random() * window.innerWidth) + 'px';
+				ou[i].style.top = Math.floor(Math.random() * window.innerHeight) + 'px';
 			}
-			setText("title", text);
-			setText("counter", text);
-			const patitos = document.getElementsByTagName("img");
-			for (let i = 0; i < patitos.length; i++) {
-				patitos[i].style.left = Math.floor(Math.random() * window.innerWidth) + 'px';
-				patitos[i].style.top = Math.floor(Math.random() * window.innerHeight) + 'px';
-			}
-			if (rand() == 2) {
-				invocaou();
-				const ou = document.getElementsByTagName("img");
-				for (let i = 0; i < ou.length; i++) {
-					ou[i].style.left = Math.floor(Math.random() * window.innerWidth) + 'px';
-					ou[i].style.top = Math.floor(Math.random() * window.innerHeight) + 'px';
-				}
-			}
-		}, 1250);
-	});
-
-	backgroundMusic.addEventListener('timeupdate', updateAudioPosition);
-}
+		}
+	}, 1250);
+});
