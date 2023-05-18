@@ -63,9 +63,9 @@ function changeColor() {
 	patitoCounter += 1;
   }
   
+  // Adds timer and autplay to play music complying with Google autplay policy.
   let timer = 0;
   let backgroundMusic = new Audio('media/background.mp3');
-  backgroundMusic.loop = true;
   
   document.addEventListener("DOMContentLoaded", function() {
 	timer = setInterval(function() {
@@ -75,6 +75,11 @@ function changeColor() {
 	  var text = `Timer: ${minutes < 10 ? "0" + minutes : minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
 	  setText("timer", text);
 	}, 1000);
+  
+	// Autoplay background music when the webpage is loaded
+	const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+	const source = audioContext.createMediaElementSource(backgroundMusic);
+	source.connect(audioContext.destination);
 	backgroundMusic.play();
   });
   
@@ -106,4 +111,3 @@ function changeColor() {
 	  }
 	}, 1250);
   });
-  
