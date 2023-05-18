@@ -105,6 +105,13 @@ function changeColor() {
 	audioButton.style.margin = "10px";
 	audioButton.addEventListener("click", toggleBackgroundMusic);
 	document.body.appendChild(audioButton);
+  
+	// Load the background music
+	backgroundMusic.addEventListener("canplaythrough", function() {
+	  // Music is ready to play
+	  backgroundMusic.volume = 0.5; // Adjust the volume if needed
+	});
+	backgroundMusic.load(); // Start loading the audio file
   });
   
   let patitoCounter = 0;
