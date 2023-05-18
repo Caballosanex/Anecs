@@ -77,15 +77,17 @@ function toggleBackgroundMusic() {
     backgroundMusic.currentTime = 0;
     backgroundMusic.loop = true;
 
-    var playPromise = backgroundMusic.play();
+    const playPromise = backgroundMusic.play();
 
-    if (playPromise !== undefined) {
-      playPromise.then(function() {
-        audioPlaying = true;
-        audioButton.innerText = "AUDIO ON";
-      }).catch(function(error) {
-        console.error("Failed to start background music:", error);
-      });
+    if (playPromise) {
+      playPromise
+        .then(() => {
+          audioPlaying = true;
+          audioButton.innerText = "AUDIO ON";
+        })
+        .catch((error) => {
+          console.error("Failed to start background music:", error);
+        });
     }
   }
 }
